@@ -1,0 +1,19 @@
+@mixin fontLight {
+  font-family: "SF Pro", sans-serif;
+  font-weight: 100;
+}
+
+@mixin fontRegular {
+  font-family: "SF Pro", sans-serif;
+  font-weight: 400;
+}
+
+@mixin fontSemibold {
+  font-family: "SF Pro", sans-serif;
+  font-weight: 500;
+}
+
+@mixin fontBold {
+  font-family: "SF Pro", sans-serif;
+  font-weight: 700;
+}
