@@ -1,0 +1,21 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.menuBarContainer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuBar {
+  height: 100%;
+  border-radius: 20px;
+  display: flex;
+  padding: 4px;
+  @include glassDark;
+}
