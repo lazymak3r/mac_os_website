@@ -1,6 +1,7 @@
 import React, {memo} from 'react';
 
 import classes from './MenuBar.module.scss'
+import {Tooltip} from "../Tooltip/Tooltip";
 import {BarIcon} from "../BarIcon/BarIcon";
 
 export const MenuBar = memo(() => {
@@ -15,12 +16,14 @@ export const MenuBar = memo(() => {
                 <BarIcon iconName={'discord'}/>
                 <BarIcon iconName={'facebook'}/>
                 <BarIcon iconName={'github'}/>
-                <BarIcon iconName={'google_chrome'}/>
+                <Tooltip text={'Google Chrome'}>
+                    <BarIcon iconName={'google_chrome'}/>
+                </Tooltip>
                 <BarIcon iconName={'instagram'}/>
                 <BarIcon iconName={'notes'}/>
                 <BarIcon iconName={'photos'}/>
                 <BarIcon iconName={'qr_encoder'}/>
-                <BarIcon iconName={'launchpad'} tooltip={'Launchpad'}/>
+                <BarIcon iconName={'launchpad'}/>
                 <BarIcon iconName={'safari'}/>
                 <BarIcon iconName={'settings'}/>
                 <BarIcon iconName={'spotify'}/>

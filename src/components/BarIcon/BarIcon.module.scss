@@ -5,50 +5,10 @@
   width: 64px;
   height: 64px;
   position: relative;
-
-  //&:hover {
-  .tooltip {
-    opacity: 1;
-    transition: 0.1s opacity ease-in;
-  }
-
-  //}
 }
 
 .barIcon {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.tooltip {
-  display: inline-block;
-  position: absolute;
-  top: -48px;
-  left: 50%;
-  opacity: 0;
-  transform: translateX(-50%);
-
-  .tooltipInner {
-    display: inline-block;
-    padding: 6px 16px;
-    border-radius: 5px;
-    color: $white;
-    font-size: 14px;
-    @include glassDark;
-    background-color: rgba(38, 46, 70);
-    position: relative;
-  }
-
-  .tooltipArrow {
-    width: 12px;
-    height: 12px;
-    display: inline-block;
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: rotate(45deg) translateX(-50%);
-    @include glassDark;
-    background-color: rgba(38, 46, 70);
-  }
 }

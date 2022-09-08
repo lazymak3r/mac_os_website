@@ -81,24 +81,15 @@ const IconsMap: { [key: string]: any } = {
 
 interface Props {
     iconName: IconName,
-    tooltip?: string;
     onClick?: () => void
 }
 
-export const BarIcon: React.FC<Props> = memo(({iconName, tooltip, onClick}) => {
-
+export const BarIcon: React.FC<Props> = memo(({iconName, onClick}) => {
     const iconSrc = useMemo(() => IconsMap[iconName], [iconName])
 
     return (
         <div className={classes.barIconContainer} onClick={onClick}>
             <img src={iconSrc} alt={iconSrc} className={classes.barIcon}/>
-            {!!tooltip && (
-                <span className={classes.tooltip}>
-                    <span className={classes.tooltipArrow}/>
-                    <span className={classes.tooltipInner}>{tooltip}</span>
-                </span>
-            )
-            }
         </div>
     )
 })

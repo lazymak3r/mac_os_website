@@ -1,0 +1,47 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.tooltipContainer {
+  position: relative;
+
+  .tooltip {
+    display: inline-block;
+    position: absolute;
+    top: -48px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.2s opacity ease-in-out;
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
+
+    .tooltipInner {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 5px;
+      color: $white;
+      font-size: 14px;
+      background-color: rgba(38, 46, 70);
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tooltipArrow {
+      width: 12px;
+      height: 12px;
+      display: inline-block;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: rotate(45deg) translateX(-50%);
+      background-color: rgba(38, 46, 70);
+    }
+  }
+
+  &:hover {
+    .tooltip {
+      opacity: 1;
+      transition: none;
+    }
+  }
+}
