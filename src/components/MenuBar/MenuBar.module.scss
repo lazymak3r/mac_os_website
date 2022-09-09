@@ -12,10 +12,13 @@
   justify-content: center;
 }
 
-.menuBar {
-  height: 100%;
-  border-radius: 20px;
-  display: flex;
+.menuBarWrapper {
   padding: 4px;
   @include glassDark;
+  border-radius: 20px;
+  height: 100%;
+}
+
+.menuBar {
+  display: flex;
 }

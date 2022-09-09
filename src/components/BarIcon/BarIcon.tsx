@@ -1,4 +1,5 @@
 import React, {memo, useMemo} from 'react';
+import classNames from "classnames";
 
 import classes from './BarIcon.module.scss'
 import activity_monitor from '../../assets/icons/activity_monitor.png'
@@ -26,7 +27,7 @@ import whatsapp from '../../assets/icons/whatsapp.png'
 import xcode from '../../assets/icons/xcode.png'
 import youtube from '../../assets/icons/youtube.png'
 
-type IconName =
+export type IconName =
     "activity_monitor"
     | "app_store"
     | "books"
@@ -81,14 +82,15 @@ const IconsMap: { [key: string]: any } = {
 
 interface Props {
     iconName: IconName,
+    className?: string,
     onClick?: () => void
 }
 
-export const BarIcon: React.FC<Props> = memo(({iconName, onClick}) => {
+export const BarIcon: React.FC<Props> = memo(({iconName, className, onClick, ...props}) => {
     const iconSrc = useMemo(() => IconsMap[iconName], [iconName])
 
     return (
-        <div className={classes.barIconContainer} onClick={onClick}>
+        <div className={classNames(classes.barIconContainer, className)} onClick={onClick} {...props}>
             <img src={iconSrc} alt={iconSrc} className={classes.barIcon}/>
         </div>
     )

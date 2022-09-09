@@ -13,7 +13,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.2s opacity ease-in-out;
-    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
 
     .tooltipInner {
       display: inline-block;
@@ -41,6 +41,14 @@
   &:hover {
     .tooltip {
       opacity: 1;
+      transition: none;
+    }
+  }
+}
+
+:global(.menu-bar) {
+  &:hover {
+    .tooltip {
       transition: none;
     }
   }
