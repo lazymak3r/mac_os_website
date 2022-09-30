@@ -1,8 +1,50 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
-.draggableArea {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
+.window {
+  width: 900px;
+  height: 500px;
+  border-radius: 5px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: stretch;
+  @include glass;
+
+  &.active {
+    z-index: 1;
+  }
+
+  .sideBar {
+    flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid black;
+
+
+    .sideBarHeader {
+      flex-basis: 50px;
+      border-bottom: 1px solid black;
+    }
+
+    .sideBarBody {
+      flex-grow: 1;
+    }
+  }
+
+  .main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    .mainHeader {
+      flex-basis: 50px;
+      border-bottom: 1px solid black;
+    }
+
+    .mainBody {
+      flex-grow: 1;
+    }
+  }
 }

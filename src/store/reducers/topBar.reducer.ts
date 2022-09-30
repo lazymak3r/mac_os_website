@@ -6,7 +6,7 @@ export interface TopBarState {
 const initialState: TopBarState = {}
 
 export const topBarSlice = createSlice({
-    name: 'root',
+    name: 'topBar',
     initialState,
     reducers: {},
 })
