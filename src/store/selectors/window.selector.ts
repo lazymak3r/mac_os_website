@@ -4,5 +4,7 @@ import {RootState} from "../index";
 
 const selectDomain = (state: RootState) => state.window
 
-export const selectActiveTabId = createSelector([selectDomain], (state) => state.activeTab.id)
+export const selectActiveWindow = createSelector([selectDomain], (state) => state.activeWindow)
+
+export const selectOpenedWindows = createSelector([selectDomain], (state) => state.openedWindows)
 

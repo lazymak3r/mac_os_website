@@ -1,17 +1,21 @@
-import React, {memo, useRef, useMemo, useState, useCallback} from 'react';
+import React, {memo, useMemo, useState, useCallback, FC} from 'react';
+import classNames from "classnames";
 import {useDispatch, useSelector} from "react-redux";
-import {v4 as uuid} from 'uuid';
 
 import classes from "./Window.module.scss";
-import {selectActiveTabId} from "../../store/selectors/window.selector";
 import {setActiveTab} from "../../store/reducers/window.reducer";
-import classNames from "classnames";
+import {selectActiveWindow} from "../../store/selectors/window.selector";
 
-export const Window = memo(() => {
+export interface WindowProps {
+    id: number;
+    name: string,
+    size: { width: number, height: number }
+}
+
+export const Window: FC<WindowProps> = memo(({id, name, size}) => {
     const dispatch = useDispatch();
-    const activeTabId = useSelector(selectActiveTabId);
+    const activeWindow = useSelector(selectActiveWindow);
 
-    const id = useRef<string>(uuid() as string);
     const [rect, setRect] = useState<DOMRect | null>(null)
     const [offset, setOffset] = useState<{ x: number, y: number }>({y: 0, x: 0})
     const [position, setPosition] = useState<{ x: number, y: number }>({y: 100, x: 200})
@@ -21,7 +25,7 @@ export const Window = memo(() => {
     }), [position]);
 
     const onWindowMouseDownHandler = useCallback((event: React.MouseEvent) => {
-        dispatch(setActiveTab({id: id.current}));
+        dispatch(setActiveTab({id, name, size}));
     }, [])
 
     const onMouseDownHandler = useCallback((event: React.MouseEvent) => {
@@ -71,7 +75,7 @@ export const Window = memo(() => {
         <div
             style={style}
             onMouseDown={onWindowMouseDownHandler}
-            className={classNames([classes.window, {[classes.active]: id.current === activeTabId}])}
+            className={classNames([classes.window, {[classes.active]: id === activeWindow?.id}])}
         >
             <div className={classes.sideBar}>
                 <div
