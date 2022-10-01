@@ -1,5 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 import {WindowProps} from "../../components/Window/Window";
 
 export interface WindowState {
@@ -34,12 +34,11 @@ export const rootSlice = createSlice({
             }
         },
         closeWindow(state: WindowState, action: PayloadAction<{ id: number }>) {
-            const openedWindows = state.openedWindows.filter(wind => wind.id !== action.payload.id)
-            state.openedWindows = openedWindows;
+            state.openedWindows = state.openedWindows.filter(wind => wind.id !== action.payload.id);
         }
     },
 })
 
-export const {setActiveTab, openWindow} = rootSlice.actions;
+export const {setActiveTab, openWindow, closeWindow} = rootSlice.actions;
 
 export default rootSlice.reducer;

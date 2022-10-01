@@ -1,0 +1,28 @@
+@import '../../sass/mixins';
+@import '../../sass/variables';
+
+.button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    filter: brightness(1.4);
+  }
+
+  &.exit {
+    background-color: $red;
+  }
+
+  &.minimize {
+    background-color: $orange;
+  }
+
+  &.resize {
+    background-color: $green;
+  }
+}

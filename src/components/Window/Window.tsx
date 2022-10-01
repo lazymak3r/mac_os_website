@@ -3,8 +3,9 @@ import classNames from "classnames";
 import {useDispatch, useSelector} from "react-redux";
 
 import classes from "./Window.module.scss";
-import {setActiveTab} from "../../store/reducers/window.reducer";
+import {closeWindow, setActiveTab} from "../../store/reducers/window.reducer";
 import {selectActiveWindow} from "../../store/selectors/window.selector";
+import {WindowButton} from "../WindowButton/WindowButton";
 
 export interface WindowProps {
     id: number;
@@ -43,6 +44,7 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
     const onDragStartHandler = useCallback((event: React.DragEvent<HTMLDivElement>) => {
         event.currentTarget.style.cursor = 'default';
         const span = document.createElement('span');
+        span.style.display = 'none'
         event.dataTransfer.setDragImage(span, 0, 0);
         return false;
     }, [])
@@ -71,6 +73,16 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
         }
     }, [onMouseDownHandler, onDragOverHandler, onDragHandler])
 
+    const exitHandler = useCallback(() => {
+        dispatch(closeWindow({id}))
+    }, [])
+
+    const minimizeHandler = useCallback(() => {
+    }, [])
+
+    const resizeHandler = useCallback(() => {
+    }, [])
+
     return (
         <div
             style={style}
@@ -82,7 +94,11 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
                     {...dragHandlers}
                     className={classes.sideBarHeader}
                 >
-
+                    <div className={classes.sidebarHeaderActions}>
+                        <WindowButton onClick={exitHandler} type={'exit'} className={classes.action}/>
+                        <WindowButton onClick={minimizeHandler} type={'minimize'} className={classes.action}/>
+                        <WindowButton onClick={resizeHandler} type={'resize'} className={classes.action}/>
+                    </div>
                 </div>
                 <div className={classes.sideBarBody}>
 

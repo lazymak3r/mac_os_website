@@ -26,6 +26,30 @@
     .sideBarHeader {
       flex-basis: 50px;
       border-bottom: 1px solid black;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+
+      .sidebarHeaderActions {
+        .action {
+          margin-right: 8px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        .action > * {
+          opacity: 0;
+          transition: 0.2s opacity ease;
+        }
+
+        &:hover {
+          .action > * {
+            opacity: 1;
+          }
+        }
+      }
     }
 
     .sideBarBody {
