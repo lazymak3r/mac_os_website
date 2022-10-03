@@ -17,7 +17,7 @@ function App() {
             <TopBar/>
             <DraggableArea>
                 {windows.map(wind => {
-                    return <Window id={wind.id} name={wind.name} size={wind.size}/>
+                    return <Window key={wind.id} id={wind.id} name={wind.name} size={wind.size}/>
                 })}
             </DraggableArea>
             <MenuBar/>

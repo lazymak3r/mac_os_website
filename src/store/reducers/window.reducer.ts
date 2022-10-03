@@ -19,7 +19,7 @@ const initialState: WindowState = {
     openedWindows: []
 }
 
-export const rootSlice = createSlice({
+export const windowSlice = createSlice({
     name: 'window',
     initialState,
     reducers: {
@@ -39,6 +39,6 @@ export const rootSlice = createSlice({
     },
 })
 
-export const {setActiveTab, openWindow, closeWindow} = rootSlice.actions;
+export const {setActiveTab, openWindow, closeWindow} = windowSlice.actions;
 
-export default rootSlice.reducer;
+export default windowSlice.reducer;
