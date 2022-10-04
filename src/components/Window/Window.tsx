@@ -6,6 +6,7 @@ import classes from "./Window.module.scss";
 import {closeWindow, setActiveTab} from "../../store/reducers/window.reducer";
 import {selectActiveWindow} from "../../store/selectors/window.selector";
 import {WindowButton} from "../WindowButton/WindowButton";
+import {WindowContent} from "../WindowContent";
 
 export interface WindowProps {
     id: number;
@@ -111,7 +112,9 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
                 >
 
                 </div>
-                <div className={classes.mainBody}></div>
+                <div className={classes.mainBody}>
+                    <WindowContent id={id}/>
+                </div>
             </div>
         </div>
     )

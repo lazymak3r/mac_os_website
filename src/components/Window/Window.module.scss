@@ -15,14 +15,15 @@
   }
 
   .sideBar {
-    flex-basis: 250px;
+    width: 200px;
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     border-right: 1px solid black;
 
 
     .sideBarHeader {
-      flex-basis: 50px;
+      height: 50px;
       border-bottom: 1px solid black;
       display: flex;
       align-items: center;
@@ -52,21 +53,24 @@
 
     .sideBarBody {
       flex-grow: 1;
+      height: calc(100% - 50px);
     }
   }
 
   .main {
-    flex-grow: 1;
+    width: calc(100% - 200px);
     display: flex;
     flex-direction: column;
 
     .mainHeader {
-      flex-basis: 50px;
+      flex-shrink: 0;
+      height: 50px;
       border-bottom: 1px solid black;
     }
 
     .mainBody {
       flex-grow: 1;
+      height: calc(100% - 50px);
     }
   }
 }
