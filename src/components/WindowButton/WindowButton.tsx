@@ -3,6 +3,8 @@ import classNames from "classnames";
 
 import classes from "./WindowButton.module.scss";
 import {ReactComponent as Exit} from '../../assets/svg/close.svg'
+import {ReactComponent as Minimize} from '../../assets/svg/minimize.svg'
+import {ReactComponent as Resize} from '../../assets/svg/resize.svg'
 
 export interface WindowProps {
     type: 'exit' | 'minimize' | 'resize',
@@ -15,8 +17,8 @@ export const WindowButton: FC<WindowProps> = memo(({type, className, onClick}) =
     const Icon = useMemo(() => {
         const icons = {
             exit: Exit,
-            minimize: Exit,
-            resize: Exit,
+            minimize: Minimize,
+            resize: Resize,
         }
         return icons[type]
     }, [type])

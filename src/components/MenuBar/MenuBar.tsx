@@ -5,8 +5,9 @@ import classes from './MenuBar.module.scss'
 import {Tooltip} from "../Tooltip/Tooltip";
 import {BarIcon, IconName} from "../BarIcon/BarIcon";
 import {WindowProps} from "../Window/Window";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {openWindow} from "../../store/reducers/window.reducer";
+import {selectOpenedWindows} from "../../store/selectors/window.selector";
 
 interface Icons {
     id: number,
@@ -18,6 +19,8 @@ interface Icons {
 export const MenuBar = memo(() => {
     const dispatch = useDispatch();
 
+    const windows = useSelector(selectOpenedWindows)
+
     const icons: Icons[] = useMemo(() => [
         {id: 1, iconName: 'finder', tooltip: 'Finder', windowName: 'Finder'},
         // {id: 2, iconName: 'activity_monitor', tooltip: 'Activity Monitor'},
@@ -26,7 +29,7 @@ export const MenuBar = memo(() => {
         // {id: 5, iconName: 'calculator', tooltip: 'Calculator'},
         // {id: 6, iconName: 'discord', tooltip: 'Discord'},
         // {id: 7, iconName: 'facebook', tooltip: 'Facebook'},
-        // {id: 8, iconName: 'github', tooltip: 'Fithub'},
+        // {id: 8, iconName: 'github', tooltip: 'Github'},
         // {id: 9, iconName: 'google_chrome', tooltip: 'Google Chrome'},
         // {id: 10, iconName: 'instagram', tooltip: 'Instagram'},
         // {id: 11, iconName: 'notes', tooltip: 'Notes'},
@@ -49,7 +52,7 @@ export const MenuBar = memo(() => {
         openWindowHandler({
             id: icon.id,
             name: icon.windowName,
-            size: {width: 900, height: 500}
+            size: {width: 900, height: 450}
         })
     }, [])
 
@@ -69,6 +72,7 @@ export const MenuBar = memo(() => {
                                     data-index={index}
                                     iconName={icon.iconName}
                                     className={classes.icon}
+                                    opened={windows?.findIndex(wind => wind.id === icon.id) !== -1}
                                     onClick={(() => onClickHandler(icon))}
                                 />
                             </Tooltip>

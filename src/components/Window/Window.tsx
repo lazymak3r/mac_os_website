@@ -17,11 +17,12 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
     const dispatch = useDispatch();
     const activeWindow = useSelector(selectActiveWindow);
 
-    const [rect, setRect] = useState<DOMRect | null>(null)
     const [offset, setOffset] = useState<{ x: number, y: number }>({y: 0, x: 0})
     const [position, setPosition] = useState<{ x: number, y: number }>({y: 100, x: 200})
 
     const style = useMemo(() => ({
+        width: size.width,
+        height: size.height,
         transform: `translateX(${position.x}px) translateY(${position.y}px)`
     }), [position]);
 
@@ -33,7 +34,6 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
         const element = event.currentTarget.closest(`.${classes.window}`);
         if (element) {
             const rect = element.getBoundingClientRect();
-            setRect(rect)
             const root = document.documentElement;
             const x = event.clientX - rect.left - root.scrollLeft;
             const y = event.clientY - rect.top - root.scrollTop;
@@ -58,8 +58,8 @@ export const Window: FC<WindowProps> = memo(({id, name, size}) => {
         const y = event.clientY - offset.y;
 
         setPosition({
-            y: Math.max(25, Math.min(y, (window.innerHeight - 500))),
-            x: Math.max(0, Math.min(x, (window.innerWidth - 900)))
+            y: Math.max(25, Math.min(y, (window.innerHeight - size.height))),
+            x: Math.max(0, Math.min(x, (window.innerWidth - size.width)))
         })
     }, [offset])
 

@@ -12,8 +12,8 @@ const initialState: WindowState = {
         id: 1,
         name: 'Finder',
         size: {
-            width: 900,
-            height: 500,
+            width: 0,
+            height: 0,
         }
     },
     openedWindows: []
@@ -34,7 +34,18 @@ export const windowSlice = createSlice({
             }
         },
         closeWindow(state: WindowState, action: PayloadAction<{ id: number }>) {
-            state.openedWindows = state.openedWindows.filter(wind => wind.id !== action.payload.id);
+            const windows = state.openedWindows.filter(wind => wind.id !== action.payload.id);
+            state.openedWindows = windows;
+            if (state.openedWindows.length === 0) {
+                state.activeWindow = {
+                    id: 1,
+                    name: 'Finder',
+                    size: {
+                        width: 0,
+                        height: 0,
+                    }
+                }
+            }
         }
     },
 })
