@@ -34,8 +34,7 @@ export const windowSlice = createSlice({
             }
         },
         closeWindow(state: WindowState, action: PayloadAction<{ id: number }>) {
-            const windows = state.openedWindows.filter(wind => wind.id !== action.payload.id);
-            state.openedWindows = windows;
+            state.openedWindows = state.openedWindows.filter(wind => wind.id !== action.payload.id);
             if (state.openedWindows.length === 0) {
                 state.activeWindow = {
                     id: 1,
