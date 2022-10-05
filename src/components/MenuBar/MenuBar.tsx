@@ -52,7 +52,7 @@ export const MenuBar = memo(() => {
         openWindowHandler({
             id: icon.id,
             name: icon.windowName,
-            size: {width: 900, height: 450}
+            size: {width: 920, height: 450}
         })
     }, [])
 

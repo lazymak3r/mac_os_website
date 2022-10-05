@@ -20,16 +20,16 @@
   font-weight: 700;
 }
 
-@mixin glass {
-  background-color: rgba(255, 255, 255, 0.3);
+@mixin glass($blur: 33px,  $color: rgba(255, 255, 255, 0.3)) {
+  background-color: $color;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.2), inset 1px 0 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(33px);
+  backdrop-filter: blur($blur);
   background-blend-mode: overlay;
 }
 
-@mixin glassDark {
-  background-color: rgba(0, 0, 0, 0.4);
+@mixin glassDark($blur: 33px, $color: rgba(0, 0, 0, 0.4)) {
+  background-color: $color;
   box-shadow: 0 10px 15px rgb(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(33px);
+  backdrop-filter: blur($blur);
   background-blend-mode: overlay;
 }
