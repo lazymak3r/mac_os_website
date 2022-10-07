@@ -41,7 +41,7 @@ export const Dropdown: FC<TopBarButtonProps> = memo(({show, width, options, onCl
             <div className={classes.list}>
                 {options.map((option) => {
                     return (
-                        <>
+                        <React.Fragment key={option.id}>
                             <div
                                 key={option.id}
                                 onClick={() => optionClickHandler(option.onClick)}
@@ -50,7 +50,7 @@ export const Dropdown: FC<TopBarButtonProps> = memo(({show, width, options, onCl
                                 {option.label}
                             </div>
                             {option.separator && <div className={classes.separator}/>}
-                        </>
+                        </React.Fragment>
                     )
                 })}
             </div>

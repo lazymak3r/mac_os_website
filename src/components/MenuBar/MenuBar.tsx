@@ -1,17 +1,18 @@
 import React, {memo, useMemo, useCallback} from 'react';
 import classNames from "classnames";
+import {useDispatch, useSelector} from "react-redux";
 
 import classes from './MenuBar.module.scss'
 import {Tooltip} from "../Tooltip/Tooltip";
-import {BarIcon, IconName} from "../BarIcon/BarIcon";
-import {WindowProps} from "../Window/Window";
-import {useDispatch, useSelector} from "react-redux";
+import {BarIcon} from "../BarIcon/BarIcon";
 import {openWindow} from "../../store/reducers/window.reducer";
+import {WindowProps} from "../Window/Window";
+import {AppIconNames} from "../../utils/appIcons";
 import {selectOpenedWindows} from "../../store/selectors/window.selector";
 
 interface Icons {
     id: number,
-    iconName: IconName,
+    iconName: AppIconNames,
     tooltip: string
     windowName: string
 }

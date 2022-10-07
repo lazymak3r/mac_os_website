@@ -5,14 +5,15 @@ import './index.scss';
 import App from './App';
 import {store} from './store'
 import {Provider} from 'react-redux'
+import {NotificationProvider} from "./components/Notifications";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
+    <NotificationProvider>
         <Provider store={store}>
             <App/>
         </Provider>
-    </React.StrictMode>
+    </NotificationProvider>
 );

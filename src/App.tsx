@@ -7,11 +7,9 @@ import {DraggableArea} from "./components/DraggableArea/DraggableArea";
 import {Window} from "./components/Window/Window";
 import {useSelector} from "react-redux";
 import {selectOpenedWindows} from "./store/selectors/window.selector";
-import {NotificationContainer} from "./components/Notifications/NotificationContainer";
 
 function App() {
     const windows = useSelector(selectOpenedWindows)
-
 
     return (
         <div className={classes.fira}>
@@ -22,7 +20,6 @@ function App() {
                 })}
             </DraggableArea>
             <MenuBar/>
-            <NotificationContainer />
         </div>
     );
 }

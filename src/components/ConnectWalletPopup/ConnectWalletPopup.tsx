@@ -6,8 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 import classes from './ConnectWalletPopup.module.scss'
 import {Switch} from "../Switch/Switch";
 import {setWallet} from "../../store/reducers/wallet.reducer";
+import {useNotification} from "../Notifications";
 import {selectedIsConnected} from "../../store/selectors/wallet.selector";
-import {Spinner} from "../Spinner/Spinner";
 
 declare var window: any
 
@@ -19,6 +19,7 @@ interface ConnectWalletPopupProps {
 
 export const ConnectWalletPopup: FC<ConnectWalletPopupProps> = memo(({show, children, onClose}) => {
     const dispatch = useDispatch();
+    const toast = useNotification();
     const popupRef = useRef<HTMLDivElement>(null);
 
     const isConnected = useSelector(selectedIsConnected);
@@ -30,7 +31,12 @@ export const ConnectWalletPopup: FC<ConnectWalletPopupProps> = memo(({show, chil
         } else if (window.web3) {
             provider = window.web3.currentProvider;
         } else {
-            console.log('Non-ethereum browser. You should install Metamask')
+            toast.open({
+                appName: 'finder',
+                title: 'Meta Mask',
+                content: 'Non-ethereum browser. You should install Metamask',
+                autoClose: -1,
+            })
         }
 
         return provider;
@@ -49,7 +55,12 @@ export const ConnectWalletPopup: FC<ConnectWalletPopupProps> = memo(({show, chil
                 }))
             }
         } catch (err) {
-            console.log(err)
+            toast.open({
+                appName: 'finder',
+                title: 'Meta Mask',
+                content: 'Non-ethereum browser. You should install Metamask',
+                autoClose: -1,
+            })
         }
     }, [])
 
@@ -67,7 +78,12 @@ export const ConnectWalletPopup: FC<ConnectWalletPopupProps> = memo(({show, chil
                 }))
             }
         } catch (err) {
-            console.log(err)
+            toast.open({
+                appName: 'finder',
+                title: 'Meta Mask',
+                content: 'User rejected the request.',
+                autoClose: -1,
+            })
         }
     }, [])
 
