@@ -1,11 +1,11 @@
-import React, {memo, useMemo,} from 'react';
+import React, {memo, useMemo, useCallback} from 'react';
+import {CSSTransition} from "react-transition-group";
 import {useDispatch, useSelector} from "react-redux";
 
 import classes from './Launchpad.module.scss'
-
-import {selectLaunchpadIsOpen} from "../../store/selectors/launchpad.selector";
-import {CSSTransition} from "react-transition-group";
 import {getIconByName} from "../../utils/appIcons";
+import {selectLaunchpadIsOpen} from "../../store/selectors/launchpad.selector";
+import {toggleLaunchpad} from "../../store/reducers/launchpad.reducer";
 
 function noop() {
 }
@@ -14,6 +14,9 @@ export const Launchpad = memo(() => {
     const dispatch = useDispatch();
     const isOpen = useSelector(selectLaunchpadIsOpen)
 
+    const handleOutSideClick = useCallback(() => {
+        dispatch(toggleLaunchpad(false))
+    }, [])
 
     const apps = useMemo(() => {
         return [
@@ -48,7 +51,7 @@ export const Launchpad = memo(() => {
             mountOnEnter={true}
             unmountOnExit={true}
         >
-            <div className={classes.launchpad}>
+            <div className={classes.launchpad} onClick={handleOutSideClick}>
                 <div className={classes.searchBox}>
                     <input type="text" placeholder={'Search'} className={classes.searchInput}/>
                 </div>
