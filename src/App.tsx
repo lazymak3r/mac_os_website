@@ -5,6 +5,7 @@ import classes from './App.module.scss';
 import {TopBar} from "./components/TopBar/TopBar";
 import {MenuBar} from "./components/MenuBar/MenuBar";
 import {Window} from "./components/Window/Window";
+import {Launchpad} from "./components/Launchpad/Launchpad";
 import {Preloader} from "./components/Preloader/Preloader";
 import {DraggableArea} from "./components/DraggableArea/DraggableArea";
 import {selectOpenedWindows} from "./store/selectors/window.selector";
@@ -26,6 +27,7 @@ function App() {
                         return <Window key={wind.id} id={wind.id} name={wind.name} size={wind.size}/>
                     })}
                 </DraggableArea>
+                <Launchpad/>
                 <MenuBar/>
             </div>
         </Preloader>

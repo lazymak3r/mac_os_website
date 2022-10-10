@@ -5,6 +5,7 @@ import topBarReducer from "./reducers/topBar.reducer";
 import windowReducer from "./reducers/window.reducer";
 import walletReducer from "./reducers/wallet.reducer";
 import notificationReducer from "./reducers/notification.reducer";
+import launchpadReducer from "./reducers/launchpad.reducer";
 
 export const store = configureStore({
     reducer: {
@@ -12,7 +13,8 @@ export const store = configureStore({
         topBar: topBarReducer,
         window: windowReducer,
         wallet: walletReducer,
-        notification: notificationReducer
+        launchpad: launchpadReducer,
+        notification: notificationReducer,
     },
 })
 
