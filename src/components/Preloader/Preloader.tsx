@@ -56,7 +56,7 @@ export const Preloader: FC<PreloaderProps> = memo(({isCompleted, onComplete, chi
 
                 <CSSTransition
                     in={isCompleted}
-                    timeout={400}
+                    timeout={300}
                     classNames={{
                         enter: classes.enter,
                         enterActive: classes.enterActive,
